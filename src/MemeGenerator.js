@@ -1,5 +1,6 @@
 import React from "react"
 import "./style.css"
+import axios from "axios"
 
 class MemeGenerator extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class MemeGenerator extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.pullImg = this.pullImg.bind(this)
+    this.saveMeme = this.saveMeme.bind(this)
   }
 
   componentDidMount() {
@@ -36,6 +38,27 @@ class MemeGenerator extends React.Component {
     this.setState({
       randomImg: this.state.allMemeImgs[randNum].url
     })
+  }
+
+  saveMeme(event) {
+    event.preventDefault()
+    console.log(this.state)
+    axios
+      .post(`${process.env.REACT_APP_APIURL}/api/memes`, {
+        top_text: this.state.topText,
+        bottom_text: this.state.bottomText,
+        img_url: this.state.randomImg
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -64,6 +87,7 @@ class MemeGenerator extends React.Component {
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
+        <button onClick={this.saveMeme}>Save Meme</button>
       </div>
     )
   }
