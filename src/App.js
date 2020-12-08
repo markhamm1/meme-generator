@@ -1,31 +1,12 @@
-<<<<<<< HEAD
-import logo from "./logo.svg";
-import "./App.css";
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-        <p>Here are some words</p>
-      </header>
-=======
-import React from "react"
-import Header from "./Header"
-import MemeGenerator from "./MemeGenerator"
+import React from "react";
+import Header from "./Header";
+import MemeGenerator from "./MemeGenerator";
 
 function App() {
   return (
     <div>
       <Header />
       <MemeGenerator />
->>>>>>> f97a7f56e3caca180acc4e6f6500e4895ff58f7a
     </div>
   );
 }
