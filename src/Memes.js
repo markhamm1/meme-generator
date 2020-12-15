@@ -8,6 +8,7 @@ class Memes extends React.Component {
     this.state = {
       allMemes: [],
     }
+    this.editMeme = this.editMeme.bind(this)
   }
 
   componentDidMount() {
@@ -23,6 +24,11 @@ class Memes extends React.Component {
       })
   }
 
+  editMeme(event) {
+    event.preventDefault()
+    console.log("editing meme")
+  }
+
   render() {
     return (
       <div>
@@ -34,7 +40,7 @@ class Memes extends React.Component {
               <h2 className="top">{meme.top_text}</h2>
               <h2 className="bottom">{meme.bottom_text}</h2>
               <br></br>
-              <button>Edit Meme</button>
+              <button onClick={this.editMeme}>Edit Meme</button>
               <br></br>
             </div>
           </li>)}
