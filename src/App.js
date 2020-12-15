@@ -2,6 +2,7 @@ import React from "react"
 import Header from "./Header"
 import MemeGenerator from "./MemeGenerator"
 import Memes from "./Memes"
+import LogIn from "./LogIn"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
@@ -9,8 +10,11 @@ function App() {
     <Router>
       <div>
         <Header />
-        <Route path="/memegenerator" component={MemeGenerator} />
-        <Route path="/memes" component={Memes} />
+        <Switch>
+          <Route path="/" component={LogIn} />
+          <Route path="/memegenerator" component={MemeGenerator} />
+          <Route path="/memes" component={Memes} />
+        </Switch>
       </div>
     </Router>
   );
