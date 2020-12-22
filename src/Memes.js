@@ -9,30 +9,25 @@ class Memes extends React.Component {
     this.state = {
       allMemes: [],
     }
-    // this.editMeme = this.editMeme.bind(this)
   }
 
   componentDidMount() {
+    const jwt = localStorage.getItem("jwt")
     axios.get(`${process.env.REACT_APP_APIURL}/api/memes`)
       .then(response => {
         this.setState({
           allMemes: response.data
         })
-        // console.log(this.state.allMemes)
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        console.log(error.response);
+        if (error.response.status === 401) {
+          console.log(this.props.history)
+          this.props.history.push("/")
+        }
       })
   }
 
-  // editMeme(event) {
-  //   event.preventDefault()
-  //   console.log("editing meme")
-  //   return (
-  //     <Route path="/editmeme">
-  //     </Route>
-  //   )
-  // }
 
   render() {
     return (
@@ -48,9 +43,6 @@ class Memes extends React.Component {
               <Link
                 to={{
                   pathname: `/editmeme/${meme.id}`,
-                  // search: "?sort=name",
-                  // hash: "#the-hash",
-                  // state: { fromDashboard: true }
                 }}
               >
                 Edit Meme

@@ -12,7 +12,7 @@ class LogIn extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.loginSubmit = this.loginSubmit.bind(this)
   }
-  
+
   handleChange(event) {
     const { name, value } = event.target
     this.setState({ [name]: value })
@@ -22,27 +22,31 @@ class LogIn extends React.Component {
     event.preventDefault()
     console.log(this.state)
     axios
-    .post(`${process.env.REACT_APP_APIURL}/api/session`, {
-      email: this.state.email,
-      password: this.state.password,
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .post(`${process.env.REACT_APP_APIURL}/api/sessions`, {
+        email: this.state.email,
+        password: this.state.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log(response)
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt;
+        localStorage.setItem("jwt", response.data.jwt);
+        this.props.history.push("/memes")
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
 
   render() {
     return (
       <div>
-        <div class = "login">
+        <div class="login">
           <form className="login-form" onSubmit={this.loginSubmit}>
             <h1>Login</h1>
             <ul>
@@ -50,7 +54,7 @@ class LogIn extends React.Component {
             </ul>
             <div class="form-group">
               <label>Email:</label>
-              <input 
+              <input
                 type="email"
                 name="email"
                 placeholder="Your Email"
@@ -60,7 +64,7 @@ class LogIn extends React.Component {
             </div>
             <div class="form-group">
               <label>Password:</label>
-              <input 
+              <input
                 type="password"
                 name="password"
                 placeholder="Your password"
@@ -68,8 +72,8 @@ class LogIn extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <input 
-              type="submit" class="btn btn-primary" value="Submit" 
+            <input
+              type="submit" class="btn btn-primary" value="Submit"
             />
           </form>
         </div>

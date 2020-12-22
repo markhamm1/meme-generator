@@ -51,6 +51,7 @@ class EditMeme extends React.Component {
       })
       .then(response => {
         console.log(response)
+        this.props.history.push("/memes")
       })
       .catch(error => {
         console.log(error)

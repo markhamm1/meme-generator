@@ -55,9 +55,14 @@ class MemeGenerator extends React.Component {
       })
       .then(response => {
         console.log(response)
+        this.props.history.push("/memes")
       })
       .catch(error => {
         console.log(error)
+        if (error.response.status === 401) {
+          console.log(this.props.history)
+          this.props.history.push("/")
+        }
       })
   }
 
