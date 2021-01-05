@@ -8,10 +8,10 @@ function Header() {
       <img src="./QuestionMark.png" />
       <p>Monster Maker</p>
       <ul className="nav-list">
-        <Link to="/memes">
+        <Link to="/monsters">
           <li>View Monster</li>
         </Link>
-        <Link to="/memegenerator">
+        <Link to="/monstermaker">
           <li>Create New Monster</li>
         </Link>
         <Link to="/logout">

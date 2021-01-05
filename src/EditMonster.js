@@ -2,7 +2,7 @@ import React from 'react'
 import "./style.css"
 import axios from 'axios'
 
-class EditMeme extends React.Component {
+class EditMonster extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -18,9 +18,10 @@ class EditMeme extends React.Component {
 
   componentDidMount() {
     const memeUrl = this.props.location.pathname
-    const memeId = memeUrl.slice(10)
-    axios.get(`${process.env.REACT_APP_APIURL}/api/memes/${memeId}`)
+    const memeId = memeUrl.slice(13)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/monsters/${memeId}`)
       .then(response => {
+        console.log(response.data)
         this.setState({
           memeInfo: response.data
         })
@@ -39,12 +40,14 @@ class EditMeme extends React.Component {
     event.preventDefault()
     console.log(this.state.topText)
     const memeUrl = this.props.location.pathname
-    const memeId = memeUrl.slice(10)
+    const memeId = memeUrl.slice(13)
     axios
-      .patch(`${process.env.REACT_APP_APIURL}/api/memes/${memeId}`, {
+      .patch(`${process.env.REACT_APP_APIURL}/api/monsters/${memeId}`, {
         top_text: this.state.topText,
         bottom_text: this.state.bottomText,
-        img_url: this.state.memeInfo.img_url
+        head_url: this.state.memeInfo.head_url,
+        body_url: this.state.memeInfo.body_url,
+        leg_url: this.state.memeInfo.leg_url
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -52,7 +55,7 @@ class EditMeme extends React.Component {
       })
       .then(response => {
         console.log(response)
-        this.props.history.push("/memes")
+        this.props.history.push("/monsters")
       })
       .catch(error => {
         console.log(error)
@@ -62,12 +65,12 @@ class EditMeme extends React.Component {
   deleteMeme(event) {
     event.preventDefault()
     const memeUrl = this.props.location.pathname
-    const memeId = memeUrl.slice(10)
+    const memeId = memeUrl.slice(13)
     axios
-      .delete(`${process.env.REACT_APP_APIURL}/api/memes/${memeId}`)
+      .delete(`${process.env.REACT_APP_APIURL}/api/monsters/${memeId}`)
       .then(response => {
         console.log(response)
-        this.props.history.push("/memes")
+        this.props.history.push("/monsters")
       })
       .catch(error => {
         console.log(error)
@@ -96,7 +99,9 @@ class EditMeme extends React.Component {
 
         </form>
         <div className="meme">
-          <img src={this.state.memeInfo.img_url} alt="" />
+          <img src={this.state.memeInfo.head_url} alt="" />
+          <img src={this.state.memeInfo.body_url} alt="" />
+          <img src={this.state.memeInfo.leg_url} alt="" />
           <h2 className="top">{this.state.topText ? this.state.topText : this.state.memeInfo.top_text}</h2>
           <h2 className="bottom">{this.state.bottomText ? this.state.bottomText : this.state.memeInfo.bottom_text}</h2>
         </div>
@@ -107,4 +112,4 @@ class EditMeme extends React.Component {
   }
 }
 
-export default EditMeme
+export default EditMonster

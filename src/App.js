@@ -1,8 +1,8 @@
 import React from "react"
 import Header from "./Header"
-import MemeGenerator from "./MemeGenerator"
-import Memes from "./Memes"
-import EditMeme from "./EditMeme"
+import MonsterMaker from "./MonsterMaker"
+import Monsters from "./Monsters"
+import EditMonster from "./EditMonster"
 import LogIn from "./LogIn"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -12,9 +12,9 @@ function App() {
       <div>
         <Header />
         <Switch>
-          <Route path="/memegenerator" component={MemeGenerator} />
-          <Route path="/memes" component={Memes} />
-          <Route path="/editmeme" component={EditMeme} />
+          <Route path="/monstermaker" component={MonsterMaker} />
+          <Route path="/monsters" component={Monsters} />
+          <Route path="/editmonster" component={EditMonster} />
           <Route path="/" component={LogIn} />
         </Switch>
       </div>

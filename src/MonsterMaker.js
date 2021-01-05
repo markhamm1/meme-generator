@@ -2,7 +2,7 @@ import React from "react"
 import "./style.css"
 import axios from "axios"
 
-class MemeGenerator extends React.Component {
+class MonsterMaker extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -78,10 +78,12 @@ class MemeGenerator extends React.Component {
     event.preventDefault()
     console.log(this.state)
     axios
-      .post(`${process.env.REACT_APP_APIURL}/api/memes`, {
+      .post(`${process.env.REACT_APP_APIURL}/api/monsters`, {
         top_text: this.state.topText,
         bottom_text: this.state.bottomText,
-        img_url: this.state.randomImg
+        head_url: this.state.randomHead,
+        body_url: this.state.randomBody,
+        leg_url: this.state.randomLeg
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -89,7 +91,7 @@ class MemeGenerator extends React.Component {
       })
       .then(response => {
         console.log(response)
-        this.props.history.push("/memes")
+        this.props.history.push("/monsters")
       })
       .catch(error => {
         console.log(error)
@@ -134,4 +136,4 @@ class MemeGenerator extends React.Component {
   }
 }
 
-export default MemeGenerator
+export default MonsterMaker
