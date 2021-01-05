@@ -107,14 +107,14 @@ class MemeGenerator extends React.Component {
           <input
             type="text"
             name="topText"
-            placeholder="Top Text"
+            placeholder="First Name"
             value={this.state.topText}
             onChange={this.handleChange}
           />
           <input
             type="text"
             name="bottomText"
-            placeholder="Bottom Text"
+            placeholder="Last Name"
             value={this.state.bottomText}
             onChange={this.handleChange}
           />

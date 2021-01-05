@@ -6,13 +6,13 @@ function Header() {
   return (
     <header>
       <img src="./QuestionMark.png" />
-      <p>Monster Meme</p>
+      <p>Monster Maker</p>
       <ul className="nav-list">
         <Link to="/memes">
-          <li>View My Memes</li>
+          <li>View Monster</li>
         </Link>
         <Link to="/memegenerator">
-          <li>Create New Meme</li>
+          <li>Create New Monster</li>
         </Link>
         <Link to="/logout">
           <li>Log Out</li>
