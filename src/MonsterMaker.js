@@ -22,8 +22,8 @@ class MonsterMaker extends React.Component {
   }
 
   componentDidMount() {
- 
-    fetch('get_heads.json') 
+
+    fetch('get_heads.json')
       .then(response => response.json())
       .then(response => {
         const { heads } = response.data
@@ -32,7 +32,7 @@ class MonsterMaker extends React.Component {
         })
       })
 
-      fetch('get_bodies.json') 
+    fetch('get_bodies.json')
       .then(response => response.json())
       .then(response => {
         const { bodies } = response.data
@@ -41,7 +41,7 @@ class MonsterMaker extends React.Component {
         })
       })
 
-      fetch('get_legs.json') 
+    fetch('get_legs.json')
       .then(response => response.json())
       .then(response => {
         const { legs } = response.data
@@ -76,7 +76,6 @@ class MonsterMaker extends React.Component {
 
   saveMeme(event) {
     event.preventDefault()
-    console.log(this.state)
     axios
       .post(`${process.env.REACT_APP_APIURL}/api/monsters`, {
         top_text: this.state.topText,
@@ -90,7 +89,6 @@ class MonsterMaker extends React.Component {
         }
       })
       .then(response => {
-        console.log(response)
         this.props.history.push("/monsters")
       })
       .catch(error => {
@@ -130,7 +128,7 @@ class MonsterMaker extends React.Component {
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
-        <button onClick={this.saveMeme} className="meme-save">Save Meme</button>
+        <button onClick={this.saveMeme} className="meme-save">Make the Monster</button>
       </div>
     )
   }
