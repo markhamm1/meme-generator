@@ -100,7 +100,7 @@ class MemeGenerator extends React.Component {
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
-        <button onClick={this.saveMeme}>Save Meme</button>
+        <button onClick={this.saveMeme} className="meme-save">Save Meme</button>
       </div>
     )
   }

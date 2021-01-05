@@ -37,18 +37,19 @@ class Memes extends React.Component {
             <div className="meme">
               <br></br>
               <img src={meme.img_url} alt="" />
-              <h2 className="top">{meme.top_text}</h2>
-              <h2 className="bottom">{meme.bottom_text}</h2>
+              <h2 className="memes-top">{meme.top_text}</h2>
+              <h2 className="memes-bottom">{meme.bottom_text}</h2>
               <br></br>
               <Link
+                className="meme-link"
                 to={{
                   pathname: `/editmeme/${meme.id}`,
                 }}
               >
                 Edit Meme
               </Link>
-              {/* <button onClick={this.editMeme}>Edit Meme</button> */}
               <br></br>
+              <hr></hr>
             </div>
           </li>)}
         </div>

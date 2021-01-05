@@ -8,16 +8,20 @@ body {
 }
 
 header {
-  height: 100px;
+  height: 150px;
   display: flex;
   align-items: center;
-  background: #6441a5; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2a0845, #6441a5); /* Chrome 10-25, Safari 5.1-6 */
+  justify-content: center;
+  background: rgba(255, 255, 0, 0.808); /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #453f08, yellow);
   background: linear-gradient(
     to right,
-    #2a0845,
-    #6441a5
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    #453f08,
+    yellow
+  ); */
+  border-style: solid;
+  border-width: thin;
+  border-color: red;
 }
 
 header > img {
@@ -28,13 +32,47 @@ header > img {
 header > p {
   font-family: VT323, monospace;
   color: whitesmoke;
-  font-size: 50px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: red;
+  font-size: 70px;
   margin-left: 60px;
+}
+
+header > .nav-list {
+  color: red;
+  list-style: none;
+  font-family: VT323, monospace;
+  margin-right: 20px;
+}
+
+.index {
+  list-style-type: none;
+}
+
+.login {
+  font-family: VT323, monospace;
+  text-align: center;
+}
+
+.login > h1 {
+  font-size: larger;
+}
+
+.login-form > .btn-primary {
+  border: none;
+  font-family: VT323, monospace;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+  background: #453f08;
+  border-radius: 8px;
 }
 
 .meme {
   position: relative;
-  width: 90%;
+  width: 50%;
   margin: auto;
 }
 
@@ -67,6 +105,29 @@ header > p {
   top: 0;
 }
 
+.meme > .memes-bottom {
+  bottom: 40px;
+}
+
+.meme > .memes-top {
+  top: 10px;
+}
+
+.meme > .meme-link {
+  border: none;
+  font-family: VT323, monospace;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+  background: whitesmoke;
+  position: center;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
 .meme-form {
   width: 90%;
   margin: 20px auto;
@@ -85,7 +146,10 @@ header > p {
   font-size: 25px;
   letter-spacing: 1.5px;
   color: white;
-  background: #6441a5;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+  background: #453f08;
+  border-radius: 8px;
 }
 
 .meme-form > input::-webkit-input-placeholder {
@@ -113,6 +177,18 @@ header > p {
   text-align: cen;
 }
 
-.index {
-  list-style-type: none;
+.meme-save {
+  border: none;
+  font-family: VT323, monospace;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+  background: #453f08;
+  position: absolute;
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 8px;
 }

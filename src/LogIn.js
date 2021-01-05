@@ -50,7 +50,7 @@ class LogIn extends React.Component {
           <form className="login-form" onSubmit={this.loginSubmit}>
             <h1>Login</h1>
             <ul>
-              <li class="text-danger">...</li>
+              {/* <li class="text-danger">...</li> */}
             </ul>
             <div class="form-group">
               <label>Email:</label>
@@ -72,8 +72,9 @@ class LogIn extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
+            <br></br>
             <input
-              type="submit" class="btn btn-primary" value="Submit"
+              type="submit" class="btn-primary" value="Submit"
             />
           </form>
         </div>
