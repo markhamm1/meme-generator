@@ -11,10 +11,10 @@ class MemeGenerator extends React.Component {
 
       randomHead: "heads/professor yeti.png",
       randomBody: "bodies/cats cradle.png",
-      randomLegs: "legs/elephant.png",
+      randomLeg: "legs/elephant.png",
       allHeadImgs: [],
       allBodiesImgs: [],
-      allMemeImgs: []
+      allLegsImgs: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.pullImg = this.pullImg.bind(this)
@@ -41,6 +41,15 @@ class MemeGenerator extends React.Component {
         })
       })
 
+      fetch('get_legs.json') 
+      .then(response => response.json())
+      .then(response => {
+        const { legs } = response.data
+        this.setState({
+          allLegsImgs: legs
+        })
+      })
+
 
   }
 
@@ -58,6 +67,10 @@ class MemeGenerator extends React.Component {
     const randBod = Math.floor(Math.random() * this.state.allBodiesImgs.length)
     this.setState({
       randomBody: this.state.allBodiesImgs[randBod].url
+    })
+    const randLeg = Math.floor(Math.random() * this.state.allLegsImgs.length)
+    this.setState({
+      randomLeg: this.state.allLegsImgs[randLeg].url
     })
   }
 
@@ -111,7 +124,7 @@ class MemeGenerator extends React.Component {
         <div className="meme">
           <img src={this.state.randomHead} alt="" />
           <img src={this.state.randomBody} alt="" />
-          <img src={this.state.randomLegs} alt="" />
+          <img src={this.state.randomLeg} alt="" />
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
