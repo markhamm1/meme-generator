@@ -8,10 +8,12 @@ class MemeGenerator extends React.Component {
     this.state = {
       topText: "",
       bottomText: "",
-      randomImg: "heads/professor yeti.png",
+
       randomHead: "heads/professor yeti.png",
       randomBody: "bodies/cats cradle.png",
       randomLegs: "legs/elephant.png",
+      allHeadImgs: [],
+      allBodiesImgs: [],
       allMemeImgs: []
     }
     this.handleChange = this.handleChange.bind(this)
@@ -26,7 +28,16 @@ class MemeGenerator extends React.Component {
       .then(response => {
         const { heads } = response.data
         this.setState({
-          allMemeImgs: heads
+          allHeadImgs: heads
+        })
+      })
+
+      fetch('get_bodies.json') 
+      .then(response => response.json())
+      .then(response => {
+        const { bodies } = response.data
+        this.setState({
+          allBodiesImgs: bodies
         })
       })
 
@@ -40,9 +51,13 @@ class MemeGenerator extends React.Component {
 
   pullImg(event) {
     event.preventDefault()
-    const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length)
+    const randHead = Math.floor(Math.random() * this.state.allHeadImgs.length)
     this.setState({
-      randomHead: this.state.allMemeImgs[randNum].url
+      randomHead: this.state.allHeadImgs[randHead].url
+    })
+    const randBod = Math.floor(Math.random() * this.state.allBodiesImgs.length)
+    this.setState({
+      randomBody: this.state.allBodiesImgs[randBod].url
     })
   }
 
