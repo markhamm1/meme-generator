@@ -9,6 +9,9 @@ class MemeGenerator extends React.Component {
       topText: "",
       bottomText: "",
       randomImg: "heads/professor yeti.png",
+      randomHead: "heads/professor yeti.png",
+      randomBody: "bodies/cats cradle.png",
+      randomLegs: "legs/elephant.png",
       allMemeImgs: []
     }
     this.handleChange = this.handleChange.bind(this)
@@ -39,7 +42,7 @@ class MemeGenerator extends React.Component {
     event.preventDefault()
     const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length)
     this.setState({
-      randomImg: this.state.allMemeImgs[randNum].url
+      randomHead: this.state.allMemeImgs[randNum].url
     })
   }
 
@@ -91,7 +94,9 @@ class MemeGenerator extends React.Component {
 
         </form>
         <div className="meme">
-          <img src={this.state.randomImg} alt="" />
+          <img src={this.state.randomHead} alt="" />
+          <img src={this.state.randomBody} alt="" />
+          <img src={this.state.randomLegs} alt="" />
           <h2 className="top">{this.state.topText}</h2>
           <h2 className="bottom">{this.state.bottomText}</h2>
         </div>
