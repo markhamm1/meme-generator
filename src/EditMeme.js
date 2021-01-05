@@ -13,6 +13,7 @@ class EditMeme extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.saveMeme = this.saveMeme.bind(this)
+    this.deleteMeme = this.deleteMeme.bind(this)
   }
 
   componentDidMount() {
@@ -58,6 +59,21 @@ class EditMeme extends React.Component {
       })
   }
 
+  deleteMeme(event) {
+    event.preventDefault()
+    const memeUrl = this.props.location.pathname
+    const memeId = memeUrl.slice(10)
+    axios
+      .delete(`${process.env.REACT_APP_APIURL}/api/memes/${memeId}`)
+      .then(response => {
+        console.log(response)
+        this.props.history.push("/memes")
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   render() {
     return (
       <div>
@@ -84,6 +100,8 @@ class EditMeme extends React.Component {
           <h2 className="top">{this.state.topText ? this.state.topText : this.state.memeInfo.top_text}</h2>
           <h2 className="bottom">{this.state.bottomText ? this.state.bottomText : this.state.memeInfo.bottom_text}</h2>
         </div>
+
+        <button className="meme-save" onClick={this.deleteMeme}>Delete Monster</button>
       </div >
     )
   }
