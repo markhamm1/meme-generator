@@ -9,7 +9,6 @@ class EditMonster extends React.Component {
       memeInfo: [],
       topText: "",
       bottomText: "",
-      randomImg: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.saveMeme = this.saveMeme.bind(this)
@@ -21,7 +20,6 @@ class EditMonster extends React.Component {
     const memeId = memeUrl.slice(13)
     axios.get(`${process.env.REACT_APP_APIURL}/api/monsters/${memeId}`)
       .then(response => {
-        console.log(response.data)
         this.setState({
           memeInfo: response.data
         })
@@ -38,7 +36,6 @@ class EditMonster extends React.Component {
 
   saveMeme(event) {
     event.preventDefault()
-    console.log(this.state.topText)
     const memeUrl = this.props.location.pathname
     const memeId = memeUrl.slice(13)
     axios
@@ -54,7 +51,6 @@ class EditMonster extends React.Component {
         }
       })
       .then(response => {
-        console.log(response)
         this.props.history.push("/monsters")
       })
       .catch(error => {
@@ -69,7 +65,6 @@ class EditMonster extends React.Component {
     axios
       .delete(`${process.env.REACT_APP_APIURL}/api/monsters/${memeId}`)
       .then(response => {
-        console.log(response)
         this.props.history.push("/monsters")
       })
       .catch(error => {
