@@ -12,6 +12,7 @@ class Monsters extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     const jwt = localStorage.getItem("jwt")
     axios.get(`${process.env.REACT_APP_APIURL}/api/monsters`)
       .then(response => {

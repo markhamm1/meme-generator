@@ -1,5 +1,6 @@
 import React from 'react'
 import "./style.css"
+import axios from 'axios'
 
 class LogOut extends React.Component {
   constructor() {
@@ -10,6 +11,8 @@ class LogOut extends React.Component {
 
   componentDidMount() {
     localStorage.clear();
+    axios.defaults.headers.common["Authorization"] = null
+    this.props.setIsLoggedIn(false)
     this.props.history.push("/")
   }
 

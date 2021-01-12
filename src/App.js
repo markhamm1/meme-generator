@@ -9,17 +9,18 @@ import CreateUser from "./CreateUser"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
   return (
     <Router>
       <div>
-        <Header />
+        <Header isLoggedIn = {isLoggedIn} />
         <Switch>
           <Route path="/monstermaker" component={MonsterMaker} />
-          <Route path="/monsters" component={Monsters} />
+          <Route path="/monsters" render={(props) => <Monsters setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
           <Route path="/editmonster" component={EditMonster} />
           <Route path="/createaccount" component={CreateUser} />
-          <Route path="/logout" component={LogOut} />
-          <Route path="/" component={LogIn} />
+          <Route path="/logout" render={(props) => <LogOut setIsLoggedIn = {setIsLoggedIn} {...props} />}  />
+          <Route path="/" render={(props) => <LogIn setIsLoggedIn = {setIsLoggedIn} {...props} />} />
         </Switch>
       </div>
     </Router>

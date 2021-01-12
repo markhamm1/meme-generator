@@ -35,6 +35,7 @@ class LogIn extends React.Component {
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
+        this.props.setIsLoggedIn(true)
         this.props.history.push("/monsters")
       })
       .catch(error => {
