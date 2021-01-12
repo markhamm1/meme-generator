@@ -220,3 +220,19 @@ header > .nav-list {
   justify-content: flex-end;
   border-radius: 8px;
 }
+
+.meme-print {
+  border: none;
+  font-family: VT323, monospace;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: red;
+  background: #453f08;
+  position: relative;
+
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 8px;
+}

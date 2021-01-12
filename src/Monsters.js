@@ -32,6 +32,7 @@ class Monsters extends React.Component {
     console.log("logging attempt to save");
   }
 
+  
 
   render() {
     return (
@@ -56,10 +57,10 @@ class Monsters extends React.Component {
               >
                 Edit Monster
               </Link>
-              <br></br>
-              <Link className="meme-link ">
-                Print Monster
-              </Link>
+              {/* <Link className="meme-link ">
+                <a href="#" class="button" id="btn-download">Download Monster</a>
+              </Link> */}
+              <button onClick={this.printMonster} className="meme-print">Download Monster</button>
               <br></br>
               <hr></hr>
             </div>
