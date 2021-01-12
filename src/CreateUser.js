@@ -1,18 +1,18 @@
 import React from 'react'
 import "./style.css"
 import axios from 'axios'
-import { BrowserRouter as Route, Link } from "react-router-dom"
 
-
-class LogIn extends React.Component {
+class CreateUser extends React.Component {
   constructor() {
     super()
     this.state = {
       email: "",
-      password: ""
+      name: "",
+      password: "",
+      passwordConfirmation: ""
     }
     this.handleChange = this.handleChange.bind(this)
-    this.loginSubmit = this.loginSubmit.bind(this)
+    this.createUser = this.createUser.bind(this)
   }
 
   handleChange(event) {
@@ -20,22 +20,21 @@ class LogIn extends React.Component {
     this.setState({ [name]: value })
   }
 
-  loginSubmit(event) {
+  createUser(event) {
     event.preventDefault()
     axios
-      .post(`${process.env.REACT_APP_APIURL}/api/sessions`, {
+      .post(`${process.env.REACT_APP_APIURL}/api/users`, {
         email: this.state.email,
+        name: this.state.name,
         password: this.state.password,
+        password_confirmation: this.state.passwordConfirmation,
       }, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
       .then(response => {
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.jwt;
-        localStorage.setItem("jwt", response.data.jwt);
-        this.props.history.push("/monsters")
+        this.props.history.push("/")
       })
       .catch(error => {
         console.log(error)
@@ -47,11 +46,9 @@ class LogIn extends React.Component {
     return (
       <div>
         <div className="login">
-          <form className="login-form" onSubmit={this.loginSubmit}>
-            <h1>Login</h1>
-            <ul>
-              {/* <li class="text-danger">...</li> */}
-            </ul>
+          <form className="login-form" onSubmit={this.createUser}>
+            <h1>Create Account</h1>
+
             <div className="form-group">
               <label>Email:</label>
               <input
@@ -62,7 +59,17 @@ class LogIn extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
+              <label>Name:</label>
+              <input
+                type="name"
+                name="name"
+                placeholder="Your Name"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
               <label>Password:</label>
               <input
                 type="password"
@@ -72,13 +79,21 @@ class LogIn extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
+            <div className="form-group">
+              <label>Confirm Password:</label>
+              <input
+                type="password"
+                name="passwordConfirmation"
+                placeholder="Re-enter password"
+                value={this.state.passwordConfirmation}
+                onChange={this.handleChange}
+              />
+            </div>
             <br></br>
             <input
               type="submit" className="btn-primary" value="Submit"
             />
           </form>
-          <br></br>
-          <Link className="meme-link" to="/createaccount">Create Account</Link>
         </div>
       </div >
 
@@ -86,4 +101,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn
+export default CreateUser

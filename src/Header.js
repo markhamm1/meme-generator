@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header>
-      <img src="./QuestionMark.png" />
+      <img src="./QuestionMark.png" alt="" />
       <p>Monster Maker</p>
       <ul className="nav-list">
         <Link to="/monsters">
-          <li>View Monster</li>
+          <li>View Monsters</li>
         </Link>
         <Link to="/monstermaker">
           <li>Create New Monster</li>
