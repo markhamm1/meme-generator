@@ -79,29 +79,29 @@ header > .nav-list {
 .monster_head {
   left: 0;
   position: absolute;
-  top: 0;
+  top: 65px;
   width: 100%;
 }
 
 .monster_body {
   left: 0;
   position: absolute;
-  top: 166px;
+  top: 231px;
   width: 100%;
 }
 
 .monster_leg {
   left: 0;
   position: absolute;
-  top: 266px;
+  top: 330px;
   width: 100%;
 }
 
 .meme {
   position: relative;
   width: 50%;
+  height: auto;
   margin: auto;
-  height: ;
 }
 
 .meme > img {
@@ -134,7 +134,7 @@ header > .nav-list {
 }
 
 .meme > .memes-bottom {
-  bottom: 40px;
+  top: 466px;
 }
 
 .meme > .memes-top {

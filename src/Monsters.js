@@ -40,7 +40,7 @@ class Monsters extends React.Component {
           {this.state.allMemes.map((meme, i) => <li className="index" key={meme.id}>
             <div className="meme">
               <br></br>
-              <canvas id="monster_canvas" ></canvas>
+              <canvas id="monster_canvas" height = "520" width = "400"></canvas>
               <img src={meme.head_url} alt="" class="monster_head"/>
               <img src={meme.body_url} alt="" class="monster_body"/>
               <img src={meme.leg_url} alt="" class="monster_leg"/>
