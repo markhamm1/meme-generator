@@ -70,10 +70,38 @@ header > .nav-list {
   border-radius: 8px;
 }
 
+.monster_canvas {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.monster_head {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.monster_body {
+  left: 0;
+  position: absolute;
+  top: 166px;
+  width: 100%;
+}
+
+.monster_leg {
+  left: 0;
+  position: absolute;
+  top: 266px;
+  width: 100%;
+}
+
 .meme {
   position: relative;
   width: 50%;
   margin: auto;
+  height: ;
 }
 
 .meme > img {
