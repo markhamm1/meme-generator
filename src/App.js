@@ -15,10 +15,10 @@ function App() {
       <div>
         <Header isLoggedIn = {isLoggedIn} />
         <Switch>
-          <Route path="/monstermashup" component={MonsterMaker} />
+          <Route path="/monstermashup" render={(props) => <MonsterMaker setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
           <Route path="/monsters" render={(props) => <Monsters setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
-          <Route path="/editmonster" component={EditMonster} />
-          <Route path="/createaccount" component={CreateUser} />
+          <Route path="/editmonster" render={(props) => <EditMonster setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
+          <Route path="/createaccount" render={(props) => <CreateUser setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
           <Route path="/logout" render={(props) => <LogOut setIsLoggedIn = {setIsLoggedIn} {...props} />}  />
           <Route path="/" render={(props) => <LogIn setIsLoggedIn = {setIsLoggedIn} {...props} />} />
         </Switch>

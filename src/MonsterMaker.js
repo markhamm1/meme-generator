@@ -92,9 +92,9 @@ class MonsterMaker extends React.Component {
         this.props.history.push("/monsters")
       })
       .catch(error => {
-        console.log(error)
+        // console.log(error)
         if (error.response.status === 401) {
-          console.log(this.props.history)
+          // console.log(this.props.history)
           this.props.history.push("/")
         }
       })
