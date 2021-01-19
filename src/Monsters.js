@@ -49,7 +49,7 @@ class Monsters extends React.Component {
                   pathname: `/editmonster/${meme.id}`,
                 }}
               >
-                Edit Meme
+                Edit Monster Name
               </Link>
               <br></br>
               <hr></hr>
