@@ -12,7 +12,6 @@ class Monsters extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     const jwt = localStorage.getItem("jwt")
     axios.get(`${process.env.REACT_APP_APIURL}/api/monsters`)
       .then(response => {
@@ -23,7 +22,6 @@ class Monsters extends React.Component {
       .catch((error) => {
         console.log(error.response);
         if (error.response.status === 401) {
-          console.log(this.props.history)
           this.props.history.push("/")
         }
       })
