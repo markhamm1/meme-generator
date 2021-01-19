@@ -15,7 +15,7 @@ function App() {
       <div>
         <Header isLoggedIn = {isLoggedIn} />
         <Switch>
-          <Route path="/monstermaker" component={MonsterMaker} />
+          <Route path="/monstermashup" component={MonsterMaker} />
           <Route path="/monsters" render={(props) => <Monsters setIsLoggedIn = {setIsLoggedIn} {...props} />}/>
           <Route path="/editmonster" component={EditMonster} />
           <Route path="/createaccount" component={CreateUser} />
